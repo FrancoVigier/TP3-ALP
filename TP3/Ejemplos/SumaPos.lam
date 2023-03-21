@@ -1,0 +1,29 @@
+
+
+
+
+
+
+
+
+
+
+
+
+def sum = \x: Nat. \y: Nat. R (x) (\r: Nat. \i: Nat. suc r) (y)
+
+def ant = \x: Nat. R 0 (\v: Nat. \i: Nat. i) (x)
+
+def resta = \x: Nat. \y: Nat. R (x) (\r: Nat. \i: Nat. ant r) (y)
+
+def length = \l: List Nat. RL 0 (\head: Nat. \tail: List Nat. \r: Nat. suc r) (l)
+
+def sumPos = \n: List Nat. RL
+                                 nil
+                                 (\head: Nat. \tail: List Nat. \r: List Nat.
+                                     (cons
+                                        (sum head (resta (length n) (length tail)))
+                                        r
+                                     )
+                                 )
+                                 (n)

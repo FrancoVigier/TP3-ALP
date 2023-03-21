@@ -1,0 +1,36 @@
+def Tuno = \x: Nat -> Nat. let y = x in y
+
+def Tdos = \a:Nat .\x: Nat. let y = x in let z = y in let j = z in let k = j in k
+
+def Ttres = \x: Nat -> Nat. let y = x in \z: (Nat->Nat)->Nat.z y
+
+def Tcuatro = Ttres (\x: Nat.x)
+
+def Tcinco = \x: Nat. suc 0
+
+def Tseis = \y: E. \x: E -> Nat. suc (x y)
+
+def Tsiete = \x: E. R x (\r: E. \v: Nat. r) 0
+
+def Tocho = \x: List Nat. cons (suc suc 0) (cons (suc 0) (cons 0 nil))
+
+def Tnueve = RL  0 (\x:Nat. \y: List Nat. \z: Nat. suc z) (cons 0 nil)
+
+def Tdiez = (RL (\x: Nat. 0) (\n: Nat. \l:List Nat. \x: Nat -> Nat. \z: Nat. x (suc z)) (cons 0 nil)) 0
+
+def sum = \x: Nat. \y: Nat. R x (\r: Nat. \i: Nat. suc r) y
+
+def ant = \x: Nat. R 0 (\v: Nat. \i: Nat. i) x
+
+def resta = \x: Nat. \y: Nat. R x (\r: Nat. \i: Nat. ant r) y
+
+def length = \l: List Nat. RL 0 (\head: Nat. \tail: List Nat. \r: Nat. suc r) l
+
+def Tonce = \n: List Nat.
+    let len = length n
+    in let f = \head: Nat. \tail: List Nat. \r: List Nat. cons (sum head (resta len (length tail))) r
+       in RL nil f n
+
+def Tdoce = Tonce (cons 0 nil)
+
+def Ttrece = Tonce (cons (suc suc 0) (cons (suc suc 0) nil))

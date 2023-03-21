@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+
+
+{- De "Notes on the λ-calculus" escrito por J.R.B. Cockett -}
+def IT = \f: Nat -> Nat. \n: Nat. R (f (suc 0)) (\r: Nat. \i: Nat. f r) n
+
+def s = \x: Nat. suc x
+def A = \m: Nat. R s (\r: Nat -> Nat. \i: Nat. IT r) m
